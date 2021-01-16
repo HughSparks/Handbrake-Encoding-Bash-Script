@@ -40,7 +40,7 @@ echo Finished encoding $FILE as $filename.$DEST_EXT
 mv "$FILE" /mnt/SparksfamilyNAS/Encoded/._"$filename"."$extension"
 timeEnd=`date +%s`
 Diff=$(((timeEnd-timeStart)/60))
-echo $Diff minuets passed while encoding "$filename"."$extension"
+echo '$Diff minuets passed while encoding "$filename"."$extension"'
 done
 
 IFS=$OIFS
