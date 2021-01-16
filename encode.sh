@@ -5,10 +5,10 @@ OIFS=$IFS
 IFS=$'\n'
 
 #Where your videos are stored
-SRC="/mnt/SparksfamilyNAS/Renamed"
+SRC="/your/video/storage/destonation"
 
 #Where your movies will be moved
-DEST="/mnt/SparksfamilyNAS/Movies"
+DEST="your/video/move/destination"
 
 #file type that handbrake will output to
 DEST_EXT=mp4
@@ -37,7 +37,9 @@ echo encoding $FILE as $filename.$DEST_EXT
 #I use the /dev/null here to prevent handbrake from "eating" all of the find loops outputs and only doing one file and exiting.
 $HANDBRAKE_CLI -i "$FILE" -o "$DEST"/"$filename"."$DEST_EXT" -Z "$PRESET" < /dev/null
 echo Finished encoding $FILE as $filename.$DEST_EXT
-mv "$FILE" /mnt/SparksfamilyNAS/Encoded/._"$filename"."$extension"
+
+#files are moved to another destination so that if the script is ever restarted video that have alread been converted do get redone.
+mv "$FILE" "$DEST"/._"$filename"."$extension"
 timeEnd=`date +%s`
 Diff=$(((timeEnd-timeStart)/60))
 echo '$Diff minuets passed while encoding "$filename"."$extension"'
