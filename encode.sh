@@ -7,8 +7,11 @@ IFS=$'\n'
 #Where your videos are stored
 SRC="/your/video/storage/destonation"
 
-#Where your movies will be moved
-DEST="your/video/move/destination"
+#Where your movies will be encoded to
+DEST="/mnt/SparksfamilyNAS/Movies"
+
+#Where your movies will be moved to after encoding
+ORG="/mnt/SparksfamilyNAS/Encoded"
 
 #file type that handbrake will output to
 DEST_EXT=mp4
@@ -39,7 +42,7 @@ $HANDBRAKE_CLI -i "$FILE" -o "$DEST"/"$filename"."$DEST_EXT" -Z "$PRESET" < /dev
 echo Finished encoding $FILE as $filename.$DEST_EXT
 
 #files are moved to another destination so that if the script is ever restarted video that have alread been converted do get redone.
-mv "$FILE" "$DEST"/._"$filename"."$extension"
+mv "$FILE" "$ORG"/._"$filename"."$extension"
 timeEnd=`date +%s`
 Diff=$(((timeEnd-timeStart)/60))
 echo '$Diff minuets passed while encoding "$filename"."$extension"'
