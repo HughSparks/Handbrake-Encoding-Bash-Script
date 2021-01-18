@@ -5,13 +5,13 @@ OIFS=$IFS
 IFS=$'\n'
 
 #Where your videos are stored
-SRC="/your/video/storage/destonation"
+SRC="/your/video/storage/destination"
 
 #Where your movies will be encoded to
-DEST="/mnt/SparksfamilyNAS/Movies"
+DEST="/your/encoding/storage/destination"
 
 #Where your movies will be moved to after encoding
-ORG="/mnt/SparksfamilyNAS/Encoded"
+ORG="/your/original/movie/copy/storage/destination"
 
 #file type that handbrake will output to
 DEST_EXT=mp4
